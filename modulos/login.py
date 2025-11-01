@@ -14,7 +14,7 @@ def verificar_usuario(Usuario, Contra):
     try:
         cursor = con.cursor()
         query = "SELECT Usuario, Contra FROM Empleados WHERE Usuario = %s AND Contra = %s"
-        cursor.execute(query, (Usuario, contra))
+        cursor.execute(query, (Usuario, Contra))
         result = cursor.fetchone()
         return result[0] if result else None
     finally:
@@ -32,9 +32,9 @@ def login():
     Contra = st.text_input("Contraseña", type="password", key="Contra_input")
 
     if st.button("Iniciar sesión"):
-        tipo = verificar_usuario(Usuario, Contra)
+        tipo = verificar_Usuario(Usuario, Contra)
         if tipo:
-            st.session_state["usuario"] = Usuario
+            st.session_state["Usuario"] = Usuario
             
             st.success(f"Bienvenido ({Usuario}) 👋")
             st.session_state["sesion_iniciada"] = True
