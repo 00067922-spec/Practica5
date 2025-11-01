@@ -1,21 +1,18 @@
 import streamlit as st
-from modulos.login import verificar_usuario  # <--- importante
+from login.venta import mostrar_venta
+from login.login import login
 
-def login():
-    st.title("Inicio de sesión")
+# Comprobamos si la sesión ya está iniciada
+if "sesion_iniciada" in st.session_state and st.session_state["sesion_iniciada"]:
+    # Mostrar el menú lateral solo si la sesión está iniciada
+    opciones = ["Ventas", "Otra opción"]  # Agrega más opciones si las necesitas
+    seleccion = st.sidebar.selectbox("Selecciona una opción", opciones)
 
-    if st.session_state.get("conexion_exitosa"):
-        st.success("✅ Conexión a la base de datos establecida correctamente.")
-
-    Usuario = st.text_input("Usuario", key="Usuario_input")
-    Contra = st.text_input("Contraseña", type="password", key="Contra_input")
-
-    if st.button("Iniciar sesión"):
-        tipo = verificar_Usuario(Usuario, Contra)
-        if tipo:
-            st.session_state["Usuario"] = Usuario
-            st.session_state["sesion_iniciada"] = True
-            st.success(f"👋 Bienvenido {Usuario}")
-            st.rerun()
-        else:
-            st.error("❌ Credenciales incorrectas.")
+    # Según la opción seleccionada, mostramos el contenido correspondiente
+    if seleccion == "Ventas":
+        mostrar_venta()
+    elif seleccion == "Otra opción":
+        st.write("Has seleccionado otra opción.")  # Aquí podrías agregar el contenido de otras opciones
+else:
+    # Si la sesión no está iniciada, mostrar el login
+    login()
