@@ -1,5 +1,5 @@
 import streamlit as st
-from modulos.verificar_usuario import verificar_Usuario  # <--- importante
+from modulos.verificar_usuario import verificar_usuario  # <--- importante
 
 def login():
     st.title("Inicio de sesión")
