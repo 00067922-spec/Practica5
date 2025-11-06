@@ -29,13 +29,13 @@ def login():
         st.success("✅ Conexión a la base de datos establecida correctamente.")
 
     Usuario = st.text_input("Usuario", key="Usuario_input")
-    Contra = st.text_input("Contraseña", type="password", key="Contra_input")
+    Contra = st.text_input("Contra", type="password", key="Contra_input")
 
     if st.button("Iniciar sesión"):
         tipo = verificar_usuario(Usuario, Contra)
         if tipo:
             st.session_state["usuario"] = Usuario
-            st.session_state["tipo_usuario"] = tipo
+            st.session_state["tipo_Usuario"] = tipo
             st.success(f"Bienvenido ({Usuario}) 👋")
             st.session_state["sesion_iniciada"] = True
             st.rerun()
