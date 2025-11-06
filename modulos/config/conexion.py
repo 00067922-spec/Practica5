@@ -4,10 +4,10 @@ from mysql.connector import Error
 def obtener_conexion():
     try:
         conexion = mysql.connector.connect(
-            host='bajbkalh7yvvxmv9sb7k-mysql.services.clever-cloud.com',
-            user='usgfd3oz3rlvjd4k',
-            password='35K9q9MbM8PKSDCGs9Zh',
-            database='bajbkalh7yvvxmv9sb7k',
+            host='be5bmntqvmjb45dbc68h-mysql.services.clever-cloud.com',
+            user='ufrsewvahgrdaghy',
+            password='UxDnJbPxibZaLwBC6Xt1',
+            database='be5bmntqvmjb45dbc68h',
             port=3306
         )
         if conexion.is_connected():
@@ -19,3 +19,5 @@ def obtener_conexion():
     except mysql.connector.Error as e:
         print(f"❌ Error al conectar: {e}")
         return None
+
+
