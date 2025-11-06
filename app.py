@@ -1,6 +1,5 @@
 # app.py
 import streamlit as st
-import sys, os sys.path.append(os.path.dirname(__file__))
 from modulos.venta import mostrar_venta  # Importamos la función mostrar_venta del módulo venta
 from modulos.login import login
 
